@@ -7,12 +7,13 @@
                   
                   <tbody  v-for="patient in user.patients" :key="patient.id">
                     <tr>
-                     <!-- <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{patient.users.name}}</font></font></td> -->
                      
-                     <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{patient.photo}}</font></font></td>
+                     <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{patient.users.name}}</font></font></td>
+                      <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{patient.age}} ans</font></font></td>
+
                       <!-- <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{patient.etat}}</font></font></td>
                       <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{patient.durée}}</font></font></td>-->
-                    <td><router-link to="/showpatient">voir</router-link></td>
+                    <td><router-link :to="`/showpatient/${patient.id}`">voir</router-link></td>
                     </tr>
                  
                   </tbody>
@@ -34,7 +35,7 @@
         },
       
           created(){
-            axios.get('http://127.0.0.1:8000/pat') 
+            axios.get('/pat') 
             .then(response => this.medecins = response.data)
                 //.then(response => this.patients = response.data)
                 // .then(({data}) => {this.medecins = data.data})

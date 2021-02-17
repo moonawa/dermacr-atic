@@ -145,7 +145,7 @@ export default {
   methods: {
 
     getPatient(id){
-              axios.get('http://127.0.0.1:8000/update' + id)
+              axios.get('update' + id)
               .then(response =>console.log(response))
               .catch(error => console.log(error));
             },

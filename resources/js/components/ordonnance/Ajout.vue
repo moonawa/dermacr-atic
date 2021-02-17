@@ -81,7 +81,7 @@ export default {
     },
     methods: {
     ordonnanceStore() {
-      axios.post("http://127.0.0.1:8000/ordonnanceadd", {
+      axios.post("ordonnanceadd", {
          medicament: this.medicament,
          dosage: this.dosage,
          indication: this.indication,

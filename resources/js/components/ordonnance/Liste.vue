@@ -48,7 +48,7 @@
         },
       
           created(){
-            axios.get ('http://127.0.0.1:8000/ordonnance') 
+            axios.get ('ordonnance') 
                 .then(response => this.ordonnances = response.data)
                 .catch(error => console.log(error));
           },

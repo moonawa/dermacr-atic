@@ -135,7 +135,8 @@ class MedecinController extends Controller
      //liste des patients d'un medecin connectée                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
      public function patientmedecin(){   
      // $user = Medecin::with('users')->where('users_id', '=', Auth::user()->id)->get();
-      $user = Medecin::with('patients')->where('users_id', '=', Auth::user()->id)->get();
+      $user = Medecin::with('patients.users')->where('users_id', '=', Auth::user()->id)->get();
+      
         //$patient = Medecin::with('patients')->get();
 
         //$user = \App\Medecin::all();

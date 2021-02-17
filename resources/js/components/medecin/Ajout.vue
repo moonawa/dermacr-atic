@@ -148,7 +148,7 @@ export default {
 
   methods: {
     medecinStore() {
-      axios.post("http://127.0.0.1:8000/medecinadd", {
+      axios.post("medecinadd", {
          name: this.name,
          email: this.email,
          password: this.password,

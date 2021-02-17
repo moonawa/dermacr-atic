@@ -126,7 +126,7 @@ export default {
 
   methods: {
     userStore() {
-      axios.post('http://127.0.0.1:8000/useradd',
+      axios.post('useradd',
       {
                     name: this.name,
                     email: this.email,

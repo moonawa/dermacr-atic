@@ -61,6 +61,8 @@ Route::get('/inspat', function () {return view('inspatient');});
 Route::get('/choose', 'PatientController@choose');
 Route::get('/patient/edit', 'PatientController@edit');
 Route::patch('/patient/edit', 'PatientController@update');
+Route::get('patients/show/{id}', 'PatientController@show');
+
 
 
 

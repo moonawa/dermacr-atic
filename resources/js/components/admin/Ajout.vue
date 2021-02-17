@@ -92,7 +92,7 @@ export default {
 
   methods: {
     adminStore() {
-      axios.post('http://127.0.0.1:8000/adminaddd',
+      axios.post('adminaddd',
       {           
         name: this.name,
          email: this.email,

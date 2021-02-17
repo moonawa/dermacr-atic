@@ -2013,7 +2013,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     adminStore: function adminStore() {
-      axios.post('http://127.0.0.1:8000/adminaddd', {
+      axios.post('adminaddd', {
         name: this.name,
         email: this.email,
         telephone: this.telephone,
@@ -2086,7 +2086,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     userStore: function userStore() {
-      axios.post("http://127.0.0.1:8000/useradd", {
+      axios.post("useradd", {
         profession: this.profession
       }).then(function (response) {
         return console.log(response);
@@ -2170,7 +2170,7 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this = this;
 
-    axios.get('http://127.0.0.1:8000/adminlist').then(function (response) {
+    axios.get('adminlist').then(function (response) {
       return _this.admins = response.data;
     })["catch"](function (error) {
       return console.log(error);
@@ -2263,7 +2263,7 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this = this;
 
-    axios.get('http://127.0.0.1:8000/medecinlist ').then(function (response) {
+    axios.get('medecinlist ').then(function (response) {
       return _this.medecins = response.data;
     })["catch"](function (error) {
       return console.log(error);
@@ -2512,7 +2512,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     medecinStore: function medecinStore() {
-      axios.post("http://127.0.0.1:8000/medecinadd", {
+      axios.post("medecinadd", {
         name: this.name,
         email: this.email,
         password: this.password,
@@ -2607,7 +2607,7 @@ __webpack_require__.r(__webpack_exports__);
   //       }
   //   },
   //     created(){
-  //       axios.get ('http://127.0.0.1:8000/patientlist ') 
+  //       axios.get ('patientlist ') 
   //           .then(response => this.patients = response.data)
   //           .catch(error => console.log(error));
   //     },
@@ -2693,7 +2693,7 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this = this;
 
-    axios.get('http://127.0.0.1:8000/medecinlist ').then(function (response) {
+    axios.get('medecinlist ').then(function (response) {
       return _this.medecins = response.data;
     })["catch"](function (error) {
       return console.log(error);
@@ -2775,7 +2775,7 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this = this;
 
-    axios.get('http://127.0.0.1:8000/medecinlist ').then(function (response) {
+    axios.get('medecinlist ').then(function (response) {
       return _this.medecins = response.data;
     })["catch"](function (error) {
       return console.log(error);
@@ -2828,6 +2828,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2838,7 +2839,7 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this = this;
 
-    axios.get('http://127.0.0.1:8000/pat').then(function (response) {
+    axios.get('/pat').then(function (response) {
       return _this.medecins = response.data;
     }) //.then(response => this.patients = response.data)
     // .then(({data}) => {this.medecins = data.data})
@@ -2897,7 +2898,33 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-/* harmony default export */ __webpack_exports__["default"] = ({});
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    patient: {
+      type: Object,
+      "default": {}
+    }
+  },
+  data: function data() {
+    return {
+      pat: this.patient //patient: null,
+
+    };
+  },
+  created: function created() {
+    axios.get('patients/show' + this.id, {
+      age: this.patient.age
+    }).then(function (response) {
+      return console.log(response);
+    })["catch"](function (error) {
+      return console.log(error);
+    });
+  },
+  mounted: function mounted() {
+    console.log(this.$router.currentRoute.params.id);
+  }
+});
 
 /***/ }),
 
@@ -2992,7 +3019,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     ordonnanceStore: function ordonnanceStore() {
-      axios.post("http://127.0.0.1:8000/ordonnanceadd", {
+      axios.post("ordonnanceadd", {
         medicament: this.medicament,
         dosage: this.dosage,
         indication: this.indication,
@@ -3067,7 +3094,7 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this = this;
 
-    axios.get('http://127.0.0.1:8000/ordonnance').then(function (response) {
+    axios.get('ordonnance').then(function (response) {
       return _this.ordonnances = response.data;
     })["catch"](function (error) {
       return console.log(error);
@@ -3184,7 +3211,7 @@ __webpack_require__.r(__webpack_exports__);
   props: ['patientToEdit'],
   methods: {
     update: function update() {
-      axios.patch('http://127.0.0.1:8000/patient/edit' + this.patientToEdit, {
+      axios.patch('patient/edit' + this.patientToEdit, {
         age: this.patientToEdit.age,
         etat: this.patientToEdit.etat,
         durée: this.patientToEdit.durée,
@@ -3269,7 +3296,7 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this = this;
 
-    axios.get('http://127.0.0.1:8000/patientlist ').then(function (response) {
+    axios.get('patientlist ').then(function (response) {
       return _this.patients = response.data;
     })["catch"](function (error) {
       return console.log(error);
@@ -3361,7 +3388,7 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this = this;
 
-    axios.get('http://127.0.0.1:8000/medecinlist ').then(function (response) {
+    axios.get('medecinlist ').then(function (response) {
       return _this.medecins = response.data;
     })["catch"](function (error) {
       return console.log(error);
@@ -3539,7 +3566,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     getPatient: function getPatient(id) {
-      axios.get('http://127.0.0.1:8000/update' + id).then(function (response) {
+      axios.get('update' + id).then(function (response) {
         return console.log(response);
       })["catch"](function (error) {
         return console.log(error);
@@ -3695,7 +3722,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     userStore: function userStore() {
-      axios.post('http://127.0.0.1:8000/useradd', {
+      axios.post('useradd', {
         name: this.name,
         email: this.email,
         password: this.password,
@@ -3781,7 +3808,7 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this = this;
 
-    axios.get('http://127.0.0.1:8000/userlist').then(function (response) {
+    axios.get('userlist').then(function (response) {
       return _this.users = response.data;
     })["catch"](function (error) {
       return console.log(error);
@@ -43293,7 +43320,7 @@ var render = function() {
                           _c(
                             "font",
                             { staticStyle: { "vertical-align": "inherit" } },
-                            [_vm._v(_vm._s(patient.photo))]
+                            [_vm._v(_vm._s(patient.users.name))]
                           )
                         ],
                         1
@@ -43305,9 +43332,30 @@ var render = function() {
                   _c(
                     "td",
                     [
-                      _c("router-link", { attrs: { to: "/showpatient" } }, [
-                        _vm._v("voir")
-                      ])
+                      _c(
+                        "font",
+                        { staticStyle: { "vertical-align": "inherit" } },
+                        [
+                          _c(
+                            "font",
+                            { staticStyle: { "vertical-align": "inherit" } },
+                            [_vm._v(_vm._s(patient.age) + " ans")]
+                          )
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "td",
+                    [
+                      _c(
+                        "router-link",
+                        { attrs: { to: "/showpatient/" + patient.id } },
+                        [_vm._v("voir")]
+                      )
                     ],
                     1
                   )
@@ -43344,56 +43392,61 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container" }, [
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-md-4 card" }, [
-          _c("div", [_vm._v("Nom")]),
-          _vm._v(" "),
-          _c("div", [_vm._v("awa")]),
-          _vm._v(" "),
-          _c("div", [_vm._v("Age")]),
-          _vm._v(" "),
-          _c("div", [_vm._v("24")]),
-          _vm._v(" "),
-          _c("div", [_vm._v("Photo")]),
-          _vm._v(" "),
-          _c("div", [_vm._v("Photo")]),
-          _vm._v(" "),
-          _c("div", [_vm._v("durée de la maladie")]),
-          _vm._v(" "),
-          _c("div", [_vm._v("d")]),
-          _vm._v(" "),
-          _c("div", [_vm._v("Antecedent")]),
-          _vm._v(" "),
-          _c("div", [_vm._v("antecedent")]),
-          _vm._v(" "),
-          _c("div", [_vm._v("Hérédité")]),
-          _vm._v(" "),
-          _c("div", [_vm._v("d")]),
-          _vm._v(" "),
-          _c("div", [_vm._v("Etat")]),
-          _vm._v(" "),
-          _c("div", [_vm._v("d")])
-        ]),
+  return _c("div", { staticClass: "container" }, [
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-md-4 card" }, [
+        _c("div", [_vm._v("Nom")]),
         _vm._v(" "),
-        _c("div", { staticClass: "col-md-8" }, [
-          _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "col-md-4" }, [_vm._v("  Consultation")]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-md-4" }, [_vm._v("Rendez-Vous")])
-          ])
+        _c("div", [_vm._v("awa")]),
+        _vm._v(" "),
+        _c("div", [_vm._v("Age")]),
+        _vm._v(" "),
+        _c("div", [_vm._v("24")]),
+        _vm._v(" "),
+        _c("div", [_vm._v("Photo")]),
+        _vm._v(" "),
+        _c("div", [_vm._v("Photo")]),
+        _vm._v(" "),
+        _c("div", [_vm._v("durée de la maladie")]),
+        _vm._v(" "),
+        _c("div", [_vm._v("d")]),
+        _vm._v(" "),
+        _c("div", [_vm._v("Antecedent")]),
+        _vm._v(" "),
+        _c("div", [_vm._v("antecedent")]),
+        _vm._v(" "),
+        _c("div", [_vm._v("Hérédité")]),
+        _vm._v(" "),
+        _c("div", [_vm._v("d")]),
+        _vm._v(" "),
+        _c("div", [_vm._v("Etat")]),
+        _vm._v(" "),
+        _c("div", [_vm._v(_vm._s(_vm.patient.age))])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-8" }, [
+        _c("div", { staticClass: "row" }, [
+          _c(
+            "div",
+            { staticClass: "col-md-4" },
+            [
+              _c("router-link", { attrs: { to: "" } }, [_vm._v("Consultation")])
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "col-md-4" },
+            [_c("router-link", { attrs: { to: "" } }, [_vm._v("Rendez-Vous")])],
+            1
+          )
         ])
       ])
     ])
-  }
-]
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -60963,7 +61016,7 @@ var routes = [{
   component: _components_user_Ajout_vue__WEBPACK_IMPORTED_MODULE_5__["default"]
 }, // pour les medecins
 {
-  path: '/showpatient',
+  path: '/showpatient/:id',
   component: _components_medecin_patientshow_vue__WEBPACK_IMPORTED_MODULE_11__["default"]
 }, {
   path: '/medecin',

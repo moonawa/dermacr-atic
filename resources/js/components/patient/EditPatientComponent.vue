@@ -90,7 +90,7 @@ export default {
 
     methods: {
         update(){
-            axios.patch('http://127.0.0.1:8000/patient/edit' + this.patientToEdit, {
+            axios.patch('patient/edit' + this.patientToEdit, {
                 age: this.patientToEdit.age,
                 etat: this.patientToEdit.etat,
                 durée: this.patientToEdit.durée,

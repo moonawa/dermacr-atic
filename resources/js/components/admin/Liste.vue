@@ -60,7 +60,7 @@
         },
       
           created(){
-            axios.get ('http://127.0.0.1:8000/adminlist') 
+            axios.get ('adminlist') 
                 .then(response => this.admins = response.data)
                 .catch(error => console.log(error));
           },

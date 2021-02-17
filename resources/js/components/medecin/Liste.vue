@@ -59,7 +59,7 @@
         },
       
           created(){
-            axios.get ('http://127.0.0.1:8000/medecinlist ') 
+            axios.get ('medecinlist ') 
                 .then(response => this.medecins = response.data)
                 .catch(error => console.log(error));
           },

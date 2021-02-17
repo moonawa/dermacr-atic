@@ -65,7 +65,7 @@
       //   },
       
       //     created(){
-      //       axios.get ('http://127.0.0.1:8000/patientlist ') 
+      //       axios.get ('patientlist ') 
       //           .then(response => this.patients = response.data)
       //           .catch(error => console.log(error));
       //     },

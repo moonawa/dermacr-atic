@@ -58,7 +58,7 @@
         },
       
           created(){
-            axios.get ('http://127.0.0.1:8000/userlist') 
+            axios.get ('userlist') 
                 .then(response => this.users = response.data)
                 .catch(error => console.log(error));
           },

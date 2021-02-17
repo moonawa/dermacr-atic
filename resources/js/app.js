@@ -55,7 +55,7 @@ const routes = [
     {path: '/ajoutuser',component: Ajout},
     // pour les medecins
     
-    {path: '/showpatient',component: ShowPatient},
+    {path: '/showpatient/:id',component: ShowPatient},
     {path: '/medecin',component: ListeMedecin},
     {path: '/ajoutmedecin', component: AjoutListeMedecin },
     {path: '/rv', component: Rv },

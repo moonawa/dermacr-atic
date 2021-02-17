@@ -15,13 +15,14 @@
         <div>Hérédité</div>
         <div>d</div>
         <div>Etat</div>
-        <div>d</div>
+        <div>{{patient.age}}</div>
+
       </div>
 
       <div class="col-md-8">
         <div class="row">
-          <div class="col-md-4">  Consultation</div>
-          <div class="col-md-4">Rendez-Vous</div>
+          <div class="col-md-4">  <router-link to>Consultation</router-link>  </div>
+          <div class="col-md-4"> <router-link to>Rendez-Vous</router-link> </div>
         </div>
       </div>
     </div>
@@ -30,7 +31,29 @@
 
 <script>
 export default {
+  props: {
+    patient: {
+      type: Object,
+      default: {}
+    },
+  },
+  data(){
+    return{
+      pat: this.patient,
+      //patient: null,
+    }
+  },
+  created(){
+    axios.get ('patients/show' + this.id, {
+      age: this.patient.age,
+    }) 
+    .then(response  => console.log(response))
+    .catch(error => console.log(error));
+    },
 
+ mounted() {
+      console.log(this.$router.currentRoute.params.id)
+    }
 }
 </script>
 
