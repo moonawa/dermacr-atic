@@ -17,6 +17,10 @@ class CreateMedecinPatientTable extends Migration
             $table->increments('id');
             $table->integer('medecin_id')->unsigned();
             $table->integer('patient_id')->unsigned();
+            $table->string('duree')->nullable();
+            $table->string('antecedent')->nullable();
+            $table->string('heredite')->nullable();
+            $table->string('photo')->default('default.jpg')->nullable();
             $table->timestamps();
         });
         Schema::table('medecin_patient', function(Blueprint $table) {

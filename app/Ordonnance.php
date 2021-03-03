@@ -11,15 +11,12 @@ class Ordonnance extends Model
         'dosage',
         'indication',
         'renouveau',
-        'medecins_id',
-        'patients_id',
+        'consultations_id',
        
     ];
 
-    public function patients(){
-        return $this->belongsTo('App\Patient');
+    public function consultations(){
+        return $this->belongsTo('App\Consultation');
     }
-    public function medecins(){
-        return $this->belongsTo('App\Medecin');
-    }
+   
 }

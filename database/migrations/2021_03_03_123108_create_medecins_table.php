@@ -15,28 +15,28 @@ class CreateMedecinsTable extends Migration
     {
         Schema::create('medecins', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('hopital');
-            $table->string('code')->nullable();
-            $table->integer('admins_id')->unsigned()->nullable();
+            $table->string('hopital')->nullable();
+            $table->string('code')->unique()->nullable();
+            $table->boolean('admin')->default(false);
+            $table->string('signature')->nullable();
             $table->integer('users_id')->unsigned();
-            $table->string('status')->nullable();
+            $table->integer('departements_id')->unsigned();
 
             $table->timestamps();
         });
-        Schema::table('medecins', function (Blueprint $table) {
-            $table->foreign('admins_id')
-            ->references('id')
-            ->on('admins')
-            ->onDelete('restrict')
-            ->onUpdate('restrict');
-        });
+
         Schema::table('medecins', function (Blueprint $table) {
             $table->foreign('users_id')->references('id')
             ->on('users')
             ->onDelete('restrict')
             ->onUpdate('restrict');
         });
-       
+        Schema::table('medecins', function (Blueprint $table) {
+            $table->foreign('departements_id')->references('id')
+            ->on('departements')
+            ->onDelete('restrict')
+            ->onUpdate('restrict');
+        });
     }
 
     /**

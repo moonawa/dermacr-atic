@@ -21,10 +21,9 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->string('telephone')->unique();
-            $table->string('sexe');
-            $table->string('localistion')->nullable();
             $table->string('role');
             $table->string('avatar')->default('default.jpg')->nullable();
+            $table->boolean('status')->default(false);
             $table->timestamps();
         });
     }

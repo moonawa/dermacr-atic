@@ -19,10 +19,7 @@ class OrdonnanceController extends Controller
     {
        // $ordonnance = Ordonnance::all();
        $patient = Patient::with('users')->where('users_id', '=', Auth::user()->id)->value('id');
-
        $ordonnance = Ordonnance::with('patients')->where('patients_id', '=', $patient)->get();
-
-
         return response()->json($ordonnance, 200);
     }
 

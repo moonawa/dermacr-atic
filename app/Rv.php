@@ -8,12 +8,12 @@ class Rv extends Model
 {
     protected $fillable = [
         'date',
+        'consultations_id',
    
     ];
-    public function patients(){
-        return $this->belongsTo('App\Patient');
-    }
-    public function medecins(){
-        return $this->belongsTo('App\Medecin');
+    
+
+    public function consultations(){
+        return $this->belongsTo('App\Consultation');
     }
 }

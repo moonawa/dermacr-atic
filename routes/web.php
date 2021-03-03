@@ -44,10 +44,6 @@ Route::get('/ordonnance', 'OrdonnanceController@index');
 Route::post('/ordonnanceadd', 'OrdonnanceController@store');
 
 
-
-
-
-
 //pour les admins
 Route::get('/admin', function () {return view('/layouts/admin'); });
 Route::get('/adminlist', 'AdminController@index');

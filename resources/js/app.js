@@ -29,6 +29,8 @@ import Rv from './components/medecin/Rv.vue';
 import Patient from './components/medecin/patientlist.vue';
 import Inscriptions from './components/medecin/Inscription.vue';
 import ShowPatient from './components/medecin/patientshow.vue';
+import Traitement from './components/medecin/ordonnancelist.vue';
+import Meet from './components/medecin/Rv.vue';
 
 
 import Ordonnace from './components/ordonnance/Liste.vue';
@@ -56,6 +58,8 @@ const routes = [
     // pour les medecins
     
     {path: '/showpatient/:id',component: ShowPatient},
+    {path: '/showordonnance/:id',component: Traitement},
+    {path: '/showrv/:id',component: Meet},
     {path: '/medecin',component: ListeMedecin},
     {path: '/ajoutmedecin', component: AjoutListeMedecin },
     {path: '/rv', component: Rv },

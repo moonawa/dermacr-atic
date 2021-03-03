@@ -12,28 +12,31 @@ class Medecin extends Model
      * @var array
      */
     protected $fillable  = [ 
-        'hopital', 'code', 'admins_id', 'users_id',
+        'hopital', 'code', 'admin', 'users_id', 'signature', 'departements_id',
     ];
 
     public function patients()
        {
-           return $this->belongsToMany('App\Patient');
+         
+        return $this->belongsToMany('App\Patient')->withPivot('duree', 'antecedent', 'heredite', 'photo');
        } 
        
-    public function admins(){
-        return $this->belongsTo('App\Admin');
-    }  
+     
     public function users(){
         return $this->belongsTo('App\User');
     }
-
-    public function ordonnances()
-    {
-        return $this->hasMany('App\Ordonnance');
+    public function departements(){
+        return $this->belongsTo('App\Departement');
     }
 
-    public function rvs()
+    
+
+    public function consultations()
     {
-        return $this->hasMany('App\Rv');
+        return $this->hasMany('App\Consultation');
+    }
+    public function factures()
+    {
+        return $this->hasMany('App\Facture');
     }
 }

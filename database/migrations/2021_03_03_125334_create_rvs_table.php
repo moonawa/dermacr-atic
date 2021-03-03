@@ -16,19 +16,12 @@ class CreateRvsTable extends Migration
         Schema::create('rvs', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamp('date');
+            $table->integer('consultations_id')->unsigned();
+            $table->timestamps();
 
-            $table->integer('patients_id')->unsigned();
-            $table->integer('medecins_id')->unsigned();
-
-            $table->foreign('patients_id')
+            $table->foreign('consultations_id')
             ->references('id')
-            ->on('patients')
-            ->onDelete('restrict')
-            ->onUpdate('restrict');
-
-            $table->foreign('medecins_id')
-            ->references('id')
-            ->on('medecins')
+            ->on('consultations')
             ->onDelete('restrict')
             ->onUpdate('restrict');
         });

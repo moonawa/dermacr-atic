@@ -9,28 +9,31 @@ class Patient extends Model
     protected $fillable = [
         
         'age',
+        'profession',
         'etat',
-        'durée',
-        'photo',
+        'sexe',
+        'adresse',
         'users_id',
     ];
 
     public function medecins()
     {
-        return $this->belongsToMany('App\Medecin');
+     
+        return $this->belongsToMany('App\Medecin')->withPivot('duree', 'antecedent', 'heredite', 'photo');
+
     }
 
     public function users(){
         return $this->belongsTo('App\User');
     }
 
-    public function ordonnances()
+    
+    public function consultations()
     {
-        return $this->hasMany('App\Ordonnance');
+        return $this->hasMany('App\Consultation');
     }
-
-    public function rvs()
+    public function factures()
     {
-        return $this->hasMany('App\Rv');
+        return $this->hasMany('App\Facture');
     }
 }

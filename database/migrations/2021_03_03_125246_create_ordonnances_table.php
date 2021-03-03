@@ -19,19 +19,12 @@ class CreateOrdonnancesTable extends Migration
             $table->string('dosage')->nullable();
             $table->string('indication')->nullable();
             $table->string('renouveau')->nullable();
-
-            $table->integer('medecins_id')->unsigned();
-            $table->integer('patients_id')->unsigned();
+            $table->integer('consultations_id')->unsigned();
             $table->timestamps();
 
-            $table->foreign('medecins_id')
+            $table->foreign('consultations_id')
             ->references('id')
-            ->on('medecins')
-            ->onDelete('restrict')
-            ->onUpdate('restrict');
-            $table->foreign('patients_id')
-            ->references('id')
-            ->on('patients')
+            ->on('consultations')
             ->onDelete('restrict')
             ->onUpdate('restrict');
             

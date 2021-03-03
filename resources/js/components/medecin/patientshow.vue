@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container" v-if="patient && patient.id">
     <div class="row">
       <div class="col-md-4 card">
         <div>Nom</div>
@@ -15,7 +15,7 @@
         <div>Hérédité</div>
         <div>d</div>
         <div>Etat</div>
-        <div>{{patient.age}}</div>
+        <div>{{ patient.age }} </div>
 
       </div>
 
@@ -31,29 +31,48 @@
 
 <script>
 export default {
-  props: {
-    patient: {
-      type: Object,
-      default: {}
-    },
-  },
+  //  props: {
+  //    patient: {
+  //      type: Object,
+  //      default: {}
+  //  },
+  // },
   data(){
     return{
-      pat: this.patient,
+      //pat: this.patient,
       //patient: null,
+      patient: {},
+       params: { _method: 'PUT' },
     }
   },
-  created(){
-    axios.get ('patients/show' + this.id, {
-      age: this.patient.age,
-    }) 
-    .then(response  => console.log(response))
+  getPatient(){
+    axios.get ('patients/show/' + this.patientId
+    ) 
+    //.then(response => this.patient = response.data)
+    //.then(response => console.log(response))
+    .then(({data}) => { this.patient = data.data})
     .catch(error => console.log(error));
     },
 
+     computed: {
+            patientId: function() {
+                return this.$route.params.id
+            },
+          
+        },
+        watch: {
+            
+            patientId: function() {
+                this.getPatient()
+            }
+        },
+
  mounted() {
       console.log(this.$router.currentRoute.params.id)
-    }
+    },
+   
+    
+ 
 }
 </script>
 

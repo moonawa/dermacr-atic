@@ -79,8 +79,9 @@ class PatientController extends Controller
      */
     public function show($id)
     {
-        $patient = Patient::with('users')->find($id);
-        return response()->json($patient, 200);
+        //$patient = Patient::with('users')->find($id);
+        $patient = Patient::whereId($id)->first();
+        return $patient;
     }
 
     /**
